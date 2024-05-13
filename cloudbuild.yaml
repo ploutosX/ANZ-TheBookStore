@@ -1,0 +1,39 @@
+images:
+  - "${_IMG}:$COMMIT_SHA"
+substitutions:
+  _IMG: asia-south1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
+steps:
+  - id: pull-latest-image
+    # to help cache layers for next steps
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - "-c"
+      - "docker pull ${_IMG}:latest || exit 0"
+  - id: build-image
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - "-c"
+      - >-
+        _timestamp=$(TZ=UTC-5:30 date +"%Y-%m-%dT%H:%M:%S%z");
+        docker build  .
+        --build-arg COMMIT_SHA=${COMMIT_SHA}
+        --build-arg TIMESTAMP=${_timestamp}
+        --tag ${_IMG}:$COMMIT_SHA
+        --tag ${_IMG}:latest
+        --tag ${_IMG}:$BRANCH_NAME
+        --cache-from ${_IMG}:latest
+        --cache-from ${_IMG}:$BRANCH_NAME
+        --network=host
+  - id: push-image
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      # print all commands
+      - "-c"
+      - >-
+        set -x;
+        docker push ${_IMG}:$COMMIT_SHA;
+        docker push ${_IMG}:$BRANCH_NAME;
+        docker push ${_IMG}:latest;
