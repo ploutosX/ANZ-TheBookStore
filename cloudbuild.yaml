@@ -30,8 +30,9 @@ steps:
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
-      # print all commands
       - "-c"
-      - >-
+      - |
         set -x;
-        docker push ${_IMG}/$COMMIT_SHA;
+        docker push ${_IMG}:${COMMIT_SHA} &&
+        docker push ${_IMG}:${BRANCH_NAME} &&
+        docker push ${_IMG}:latest;
