@@ -31,7 +31,7 @@ RUN /venv/bin/pip install "poetry==$POETRY_VERSION"
 
 RUN /venv/bin/poetry config virtualenvs.create false
 
-RUN /venv/bin/poetry install --no-root
+RUN /venv/bin/poetry install --no-root --no-dev
 
 # ---------------------------- Final stage ------------------------------ #
 FROM base as final
