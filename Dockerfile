@@ -24,7 +24,11 @@ RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
 COPY pyproject.toml poetry.lock ./
-RUN ./venv/bin/activate && poetry install --only main --no-root
+
+RUN /venv/bin/python -m pip install --upgrade pip && \
+    /venv/bin/pip install poetry && \
+    /venv/bin/poetry config virtualenvs.create false && \
+    /venv/bin/poetry install --no-root
 
 # ---------------------------- Final stage ------------------------------ #
 FROM base as final
