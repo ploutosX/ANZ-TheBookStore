@@ -1,7 +1,7 @@
 images:
   - "${_IMG}:$COMMIT_SHA"
 substitutions:
-  _IMG: asia-south1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
+  _IMG: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
 steps:
   - id: pull-latest-image
     # to help cache layers for next steps
