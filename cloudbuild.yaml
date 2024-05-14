@@ -35,5 +35,3 @@ steps:
       - >-
         set -x;
         docker push ${_IMG}/$COMMIT_SHA;
-        docker push ${_IMG}/$BRANCH_NAME;
-        docker push ${_IMG}/$BRANCH_NAME:latest;
