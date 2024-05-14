@@ -23,7 +23,7 @@ ARG PIP_DEFAULT_TIMEOUT=100 \
 RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock README.md ./
 
 RUN /venv/bin/python -m pip install --upgrade pip 
 
