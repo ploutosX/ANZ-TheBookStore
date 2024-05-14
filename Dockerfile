@@ -29,8 +29,9 @@ RUN /venv/bin/python -m pip install --upgrade pip
 
 RUN /venv/bin/pip install "poetry==$POETRY_VERSION"
 
-RUN /venv/bin/poetry config virtualenvs.create false && \
-    /venv/bin/poetry install --no-root
+RUN /venv/bin/poetry config virtualenvs.create false
+
+RUN /venv/bin/poetry install --no-root
 
 # ---------------------------- Final stage ------------------------------ #
 FROM base as final
