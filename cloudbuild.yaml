@@ -11,7 +11,7 @@ steps:
       - "-c"
       - "docker pull ${_IMG}:latest || exit 0"
   - id: build-image
-    name: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
+    name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - "-c"
