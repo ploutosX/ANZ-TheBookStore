@@ -1,7 +1,7 @@
 images:
   - "${_IMG}:$COMMIT_SHA"
 substitutions:
-  _IMG: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository/
+  _IMG: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
 steps:
   - id: pull-latest-image
     # to help cache layers for next steps
@@ -11,7 +11,7 @@ steps:
       - "-c"
       - "docker pull ${_IMG}:latest || exit 0"
   - id: build-image
-    name: gcr.io/cloud-builders/docker
+    name: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
     entrypoint: bash
     args:
       - "-c"
