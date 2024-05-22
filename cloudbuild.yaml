@@ -23,8 +23,8 @@ steps:
         --tag ${_IMG}/$COMMIT_SHA
         --tag ${_IMG}/latest
         --tag ${_IMG}/$BRANCH_NAME
-        --cache-from ${_IMG}:latest
-        --cache-from ${_IMG}:$BRANCH_NAME
+        --cache-from ${_IMG}/latest
+        --cache-from ${_IMG}/$BRANCH_NAME
         --network=host
   - id: push-image
     name: gcr.io/cloud-builders/docker
