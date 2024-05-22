@@ -20,9 +20,9 @@ steps:
         docker build  .
         --build-arg COMMIT_SHA=${COMMIT_SHA}
         --build-arg TIMESTAMP=${_timestamp}
-        --tag ${_IMG}:$COMMIT_SHA
-        --tag ${_IMG}:latest
-        --tag ${_IMG}:$BRANCH_NAME
+        --tag ${_IMG}/$COMMIT_SHA
+        --tag ${_IMG}/latest
+        --tag ${_IMG}/$BRANCH_NAME
         --cache-from ${_IMG}:latest
         --cache-from ${_IMG}:$BRANCH_NAME
         --network=host
@@ -34,5 +34,5 @@ steps:
       - |
         set -x;
         docker push ${_IMG}/${COMMIT_SHA} &&
-        docker push ${_IMG}/${COMMIT_SHA}:${BRANCH_NAME} &&
-        docker push ${_IMG}/${COMMIT_SHA}:latest;
+        docker push ${_IMG}/${BRANCH_NAME} &&
+        docker push ${_IMG}/latest;
