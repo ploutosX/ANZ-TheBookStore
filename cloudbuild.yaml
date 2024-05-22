@@ -1,5 +1,5 @@
 images:
-  - "${_IMG}:$COMMIT_SHA"
+  - "${_IMG}/$COMMIT_SHA"
 substitutions:
   _IMG: us-central1-docker.pkg.dev/anz-interview-book-store/the-book-store-repository
 steps:
