@@ -1,10 +1,7 @@
 from datetime import datetime
 from enum import Enum
-from fastapi import HTTPException
 from pydantic import BaseModel, field_validator
-from sqlalchemy.dialects.postgresql import UUID as UUIDSQL
 from typing import Optional
-from uuid import uuid4, UUID
 
 
 class Category(str, Enum):

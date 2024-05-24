@@ -1,11 +1,9 @@
-from fastapi import APIRouter, Depends, Request, HTTPException, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.database import get_db
-from fastapi import Depends, FastAPI, HTTPException, Request, Response, status, File, UploadFile
 from enum import Enum
-from starlette.responses import FileResponse
 from . import crud, schemas
-from typing import Union, List
+from typing import List
 
 
 router = APIRouter(prefix="/bookstore", tags=["Book Store"])

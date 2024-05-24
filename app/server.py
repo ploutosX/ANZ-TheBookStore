@@ -2,8 +2,7 @@
 from . import __title__, __version__, __description__, __feature__
 from app.database import SessionLocal
 from app.bookstore.api import router as bookstore_router
-from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi import FastAPI
 import logging
 import os
 

@@ -1,6 +1,4 @@
 from . import schemas, models
-from datetime import datetime, date
-from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy import tuple_
 from typing import List
